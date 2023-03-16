@@ -5,7 +5,7 @@
 #include <sys/time.h>
 
 #define ITERATIONS 1e09
-#define THREADS 8
+#define THREADS 1
 
 double piTotal[THREADS];
 
@@ -16,6 +16,7 @@ void *calculatePi(void *arg)
   initIteration = (ITERATIONS/THREADS) * threadId;
   endIteration = initIteration + ((ITERATIONS/THREADS) - 1);
   piTotal[threadId] = 0.0;
+  printf("initIteration: %d, endIteration: %d/n", initIteration, endIteration);
     do{
         piTotal[threadId] = piTotal[threadId] + (double)(4.0 / ((initIteration*2)+1));
         initIteration++;
